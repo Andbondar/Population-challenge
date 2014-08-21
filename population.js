@@ -8,13 +8,16 @@ $(document).ready(function () {
         maxWidth: 120
     });
     setInterval(unemployedGenerator, 10000);
+    setInterval(totalPopulation, 10000);//updates population count
+    setInterval(foodProduction,10000); //food production and famine
     setInterval(updateCount, 100);
 
     var population = {
         unemployed: 2,
         farmers: 0,
         scientists: 0,
-        government: 0
+        government: 0,
+        total: 0
     };
 
     var resources = {
@@ -48,10 +51,9 @@ $(document).ready(function () {
     }
 
     function sendMessage(text) {
-        var message = $('p').filter('.message');
-        message.remove(); //all messages are cleared if something was displayed before
+        $('p').filter('.message').remove(); //all messages are cleared if something was displayed before
         $('body').append('<p class="message">' + text.toString(10) + '</p>');
-        message.delay(2000).fadeOut('slow');
+        $('p').filter('.message').delay(3000).fadeOut('slow'); //query should be reused cause it received new object
     }
 
     function unemployedGenerator() {
@@ -90,5 +92,22 @@ $(document).ready(function () {
             sendMessage(errorMessages.notEnoughUnemployed);
         }
     });
+
+    function totalPopulation() {
+        population.total = population.farmers + population.scientists + population.government + population.unemployed;
+    }
+
+    function foodProduction(){
+        resources.food = resources.food + population.farmers*3 - population.total;
+        if (resources.food<0){
+            population.unemployed = parseInt(Math.floor(population.unemployed*0.5)); //50% of unemployed died. 50% left
+            population.scientists = parseInt(Math.floor(population.scientists*0.8)); //20% of scientists died, 80% left
+            resources.food = 0;
+            sendMessage(errorMessages.famine);
+        }
+        else if (population.total>resources.food){
+            sendMessage(errorMessages.famineDanger);
+        }
+    }
 
 });
