@@ -58,10 +58,10 @@ $(document).ready(function () {
                 population.farmers += 1; //increase farmers count by 1
                 resources.food -= 5; //decrease food count by 5
             } else {
-                sendMessage(messages.notEnoughFood);
+                sendMessage(errorMessages.notEnoughFood);
             }
         } else {
-            sendMessage(messages.notEnoughUnemployed);
+            sendMessage(errorMessages.notEnoughUnemployed);
         }
     });
 
@@ -74,13 +74,13 @@ $(document).ready(function () {
                     resources.food -= 10;
                     resources.money -= 10;
                 } else {
-                    sendMessage(messages.notEnoughMoney);
+                    sendMessage(errorMessages.notEnoughMoney);
                 }
             } else {
-                sendMessage(messages.notEnoughFood);
+                sendMessage(errorMessages.notEnoughFood);
             }
         } else {
-            sendMessage(messages.notEnoughUnemployed);
+            sendMessage(errorMessages.notEnoughUnemployed);
         }
     });
 
