@@ -1,66 +1,68 @@
-html{
-    font-family:Arial;
-}
-h1{
-    margin-bottom:45px;
+html {
+    font-family: Arial;
 }
 
-div{
-    float:left;
+h1 {
+    margin-bottom: 45px;
 }
 
-table,h3{
-    border-collapse:collapse;
-    margin:10px 20px 10px 20px;
-    position:relative;
+div {
+    float: left;
 }
 
-table#population_data td{
-    height:30px;
+table, h3 {
+    border-collapse: collapse;
+    margin: 10px 20px 10px 20px;
+    position: relative;
 }
 
-table#score_data{
-    position:relative;
-    top:30px;
-    font-weight:bold;
+table#population_data td {
+    height: 30px;
 }
 
-td{
-    border-bottom:1px solid #ccc;
+table#score_data {
+    position: relative;
+    top: 30px;
+    font-weight: bold;
 }
 
-td:first-child{
-    width:100px;
+td {
+    border-bottom: 1px solid #ccc;
 }
 
-.count{
-    width:40px;
-    text-align:right;
+td:first-child {
+    width: 100px;
 }
 
-.control{
-    height:30px;
-    width:180px;
-    margin:0px;
-    text-align:center;
-    background-color:orange;
-}
-#buttons{
-    position:relative;
+.count {
+    width: 40px;
+    text-align: right;
 }
 
-p.message{
-    clear:both;
-    margin-left:20px;
-    color:red;
+.control {
+    height: 30px;
+    width: 180px;
+    margin: 0px;
+    text-align: center;
+    background-color: orange;
+}
+
+#buttons {
+    position: relative;
+}
+
+p.message {
+    clear: both;
+    margin-left: 20px;
+    color: red;
 }
 
 .tooltip {
-    display:none;
-    position:absolute;
-    box-shadow:2px 2px 3px rgba(0,0,0,.2);
+    display: none;
+    position: absolute;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
     background-color: #fff;
-    border:1px solid #000;
-    color:#666;
-    padding:10px;
+    border: 1px solid #000;
+    color: #666;
+    padding: 10px;
 }
