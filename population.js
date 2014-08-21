@@ -18,7 +18,7 @@ $(document).ready(function(){
         reputation: 0
     };
 
-    function updateCount(){
+    function updateCount() {
         $('#unemployed_count').text(population.unemployed);
         $('#farmers').text(population.farmers);
         $('#scientists').text(population.scientists);
@@ -28,30 +28,27 @@ $(document).ready(function(){
         $('#reputation').text(resources.reputation);
     }
 
-    function sendMessage(text){
+    function sendMessage(text) {
         var message = $('p').filter('.message');
         message.remove();//all messages are cleared if something was displayed before
         $('body').append('<p class="message">'+text.toString(10)+'</p>');
         message.delay(2000).fadeOut('slow');
     }
 
-    function unemployedGenerator(){
+    function unemployedGenerator() {
        population.unemployed += 1;
     }
 
     $("#farm_button").click(function() { //if unemployed citizen and 5 food are available - convert unemployed to farmer
-        var foodCount = resources.food;
-        if (population.unemployed >= 1){
-            if (foodCount >= 5){
+        if (population.unemployed >= 1) {
+            if (resources.food >= 5){
                 population.unemployed -= 1;//decrease unemployed count by 1
                 population.farmers += 1;//increase farmers count by 1
                 resources.food -= 5;//decrease food count by 5
-            }
-            else{
+            } else{
                 sendMessage('Not enough food. Train more farmers.');
             }
-        }
-        else{
+        } else{
             sendMessage('There are currently no unemployed citizens for work on farm.');
         }
     });
