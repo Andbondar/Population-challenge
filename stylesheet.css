@@ -56,13 +56,3 @@ p.message {
     margin-left: 20px;
     color: red;
 }
-
-.tooltip {
-    display: none;
-    position: absolute;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, .2);
-    background-color: #fff;
-    border: 1px solid #000;
-    color: #666;
-    padding: 10px;
-}

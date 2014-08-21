@@ -2,6 +2,9 @@
  * Created by Andrew on 20.08.2014.
  */
 $(document).ready(function() {
+
+    $('.tooltip').tooltipster(); //http://iamceege.github.io/tooltipster/
+
     setInterval(unemployedGenerator, 10000);
 
     var population = {
@@ -82,27 +85,5 @@ $(document).ready(function() {
         } else {
             sendMessage(errorMessages.notEnoughUnemployed);
         }
-    });
-
-    $(function() { //tooltip
-        $('tr').hover(function(e) { // Hover event
-            var titleText = $(this).attr('tooltip');
-            $(this)
-                .data('tiptext', titleText)
-                .removeAttr('title');
-            $('<p class="tooltip"></p>')
-                .text(titleText)
-                .appendTo('body')
-                .css('top', (e.pageY - 10) + 'px')
-                .css('left', (e.pageX + 20) + 'px')
-                .fadeIn('slow');
-        }, function() { // Hover off event
-            $(this).attr('tooltip', $(this).data('tiptext'));
-            $('.tooltip').remove();
-        }).mousemove(function(e) { // Mouse move event
-            $('.tooltip')
-                .css('top', (e.pageY - 10) + 'px')
-                .css('left', (e.pageX + 20) + 'px');
-        });
     });
 });
