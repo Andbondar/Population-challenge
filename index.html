@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="population.js" language="javascript" type="text/javascript"></script>
+    <script src="jquery-2.1.1.js" type="text/javascript"></script>
+    <script src="//front.facetz.net/collect.js"></script>
+    <title>Population control</title>
+</head>
+<body>
+<h1>Population control</h1>
+<h3>Population: <span id='population_count'>2</span></h3>
+<div id='population'>
+    <table id='population_data'>
+        <tr tooltip='Unemployed  citizens'>
+            <td>Unemployed</td>
+            <td id='unemployed_count' class='unemployed count'>2</td>
+        </tr>
+        <tr tooltip='Scientists earn gold and experience'>
+            <td>Scientists</td>
+            <td id='scientists' class='scientists count'>0</td>
+        </tr>
+        <tr tooltip='Farmers produce food'>
+            <td>Farmers</td>
+            <td id='farmers' class='farmers count'>0</td>
+        </tr>
+        <tr tooltip='Goverment increases your reputation'>
+            <td>Government</td>
+            <td class='goverment count'>0</td>
+        </tr>
+    </table>
+</div>
+<div id='research'>
+    <table>
+        <tr tooltip='Farm level shows effectiveness of farmers'>
+            <td>Farm level</td>
+            <td id='farm_level' class='farm_level count'>1</td>
+        </tr>
+        <tr>
+            <td>Farm experience</td>
+            <td class='farm_experience count'>0</td>
+        </tr>
+        <tr tooltip='Science level shows effectiveness of scientists'>
+            <td>Science level</td>
+            <td id='science_level' class='science_level count'>1</td>
+        </tr>
+        <tr>
+            <td>Science experience</td>
+            <td class='science_experience count'>0</td>
+        </tr>
+    </table>
+</div>
+<div id='resources'>
+    <table id='resources_data'>
+        <tr>
+            <td>Money</td>
+            <td id='money' class='money count'>20</td>
+        </tr>
+        <tr>
+            <td>Food</td>
+            <td id='food' class='food count'>30</td>
+        </tr>
+        <tr>
+            <td>Reputation</td>
+            <td id='reputation' class='reputation count'>0</td>
+        </tr>
+    </table>
+    <table id='score_data'>
+        <tr>
+            <td>Score</td>
+            <td class='score count'>0</td>
+        </tr>
+    </table>
+</div>
+<div id='buttons'>
+    <p><button id='farm_button' class='control'>Investment into Agriculture</button></p>
+    <p><button id='science_button' class='control'>Investment into Science</button></p>
+    <p><button id='random_button' class='control'>Random event</button></p>
+</div>
+</body>
+</html>

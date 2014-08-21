@@ -1,0 +1,66 @@
+html{
+    font-family:Arial;
+}
+h1{
+    margin-bottom:45px;
+}
+
+div{
+    float:left;
+}
+
+table,h3{
+    border-collapse:collapse;
+    margin:10px 20px 10px 20px;
+    position:relative;
+}
+
+table#population_data td{
+    height:30px;
+}
+
+table#score_data{
+    position:relative;
+    top:30px;
+    font-weight:bold;
+}
+
+td{
+    border-bottom:1px solid #ccc;
+}
+
+td:first-child{
+    width:100px;
+}
+
+.count{
+    width:40px;
+    text-align:right;
+}
+
+.control{
+    height:30px;
+    width:180px;
+    margin:0px;
+    text-align:center;
+    background-color:orange;
+}
+#buttons{
+    position:relative;
+}
+
+p.message{
+    clear:both;
+    margin-left:20px;
+    color:red;
+}
+
+.tooltip {
+    display:none;
+    position:absolute;
+    box-shadow:2px 2px 3px rgba(0,0,0,.2);
+    background-color: #fff;
+    border:1px solid #000;
+    color:#666;
+    padding:10px;
+}
