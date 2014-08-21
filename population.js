@@ -65,4 +65,25 @@ $(document).ready(function () {
         }
     });
 
+    $(function(){//tooltip
+        $('tr').hover(function(e){ // Hover event
+            var titleText = $(this).attr('tooltip');
+            $(this)
+                .data('tiptext', titleText)
+                .removeAttr('title');
+            $('<p class="tooltip"></p>')
+                .text(titleText)
+                .appendTo('body')
+                .css('top', (e.pageY - 10) + 'px')
+                .css('left', (e.pageX + 20) + 'px')
+                .fadeIn('slow');
+        }, function(){ // Hover off event
+            $(this).attr('tooltip', $(this).data('tiptext'));
+            $('.tooltip').remove();
+        }).mousemove(function(e){ // Mouse move event
+            $('.tooltip')
+                .css('top', (e.pageY - 10) + 'px')
+                .css('left', (e.pageX + 20) + 'px');
+        });
+    });
 });
