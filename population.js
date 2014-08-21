@@ -41,9 +41,7 @@ $(document).ready(function() {
     }
 
     function sendMessage(text) {
-        $('p').filter('.message').remove(); //all messages are cleared if something was displayed before
-        $('body').append('<p class="message">' + text.toString(10) + '</p>');
-        $('p').filter('.message').delay(2000).fadeOut('slow');
+        $('#messages').text(text).show().delay(2000).fadeOut('slow');
     }
 
     function unemployedGenerator() {
