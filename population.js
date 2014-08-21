@@ -18,6 +18,14 @@ $(document).ready(function() {
         reputation: 0
     };
 
+    var research = {
+        farmLevel: 0,
+        farmExperience: 0,
+        scienceLevel: 0,
+        scienceExperience: 0
+
+    };
+
     function updateCount() {
         $('#unemployed_count').text(population.unemployed);
         $('#farmers').text(population.farmers);
@@ -26,6 +34,10 @@ $(document).ready(function() {
         $('#money').text(resources.money);
         $('#food').text(resources.food);
         $('#reputation').text(resources.reputation);
+        $('#farm_level').text(research.farmLevel);
+        $('#farm_experience').text(research.farmExperience);
+        $('#science_level').text(research.scienceLevel);
+        $('#science_experience').text(research.scienceExperience);
     }
 
     function sendMessage(text) {
