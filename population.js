@@ -58,10 +58,29 @@ $(document).ready(function () {
                 population.farmers += 1; //increase farmers count by 1
                 resources.food -= 5; //decrease food count by 5
             } else {
-                sendMessage('Not enough food. Train more farmers.');
+                sendMessage(messages.notEnoughFood);
             }
         } else {
-            sendMessage('There are currently no unemployed citizens for work on farm.');
+            sendMessage(messages.notEnoughUnemployed);
+        }
+    });
+
+    $('#science_button').click(function () {
+        if (population.unemployed >= 1) {
+            if (resources.food >= 10) {
+                if (resources.money >= 10) {
+                    population.unemployed -= 1;
+                    population.scientists += 1;
+                    resources.food -= 10;
+                    resources.money -= 10;
+                } else {
+                    sendMessage(messages.notEnoughMoney);
+                }
+            } else {
+                sendMessage(messages.notEnoughFood);
+            }
+        } else {
+            sendMessage(messages.notEnoughUnemployed);
         }
     });
 
