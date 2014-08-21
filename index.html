@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <link rel="stylesheet" type="text/css" href="tooltipster.css" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="jquery-2.1.1.js"></script>
     <script type="text/javascript" src="properties.js"></script>
     <script type="text/javascript" src="population.js"></script>
     <script type="text/javascript" src="jquery.tooltipster.min.js"></script>
@@ -20,17 +20,17 @@
             <td>Unemployed</td>
             <td id='unemployed_count' class='unemployed count'></td>
         </tr>
-        <tr class="tooltip" title='Scientists earn gold and experience'>
-            <td>Scientists</td>
-            <td id='scientists' class='scientists count'></td>
-        </tr>
         <tr class="tooltip" title='Farmers produce food'>
             <td>Farmers</td>
             <td id='farmers' class='farmers count'></td>
         </tr>
-        <tr class="tooltip" title='Goverment increases your reputation'>
+        <tr class="tooltip" title='Scientists earn gold and experience'>
+            <td>Scientists</td>
+            <td id='scientists' class='scientists count'></td>
+        </tr>
+        <tr class="tooltip" title='Government increases your reputation'>
             <td>Government</td>
-            <td id='government' class='goverment count'></td>
+            <td id='government' class='government count'></td>
         </tr>
     </table>
 </div>
@@ -40,7 +40,7 @@
             <td>Farm level</td>
             <td id='farm_level' class='farm_level count'></td>
         </tr>
-        <tr>
+        <tr class="tooltip" title="Experience in agriculture">
             <td>Farm experience</td>
             <td id='farm_experience' class='farm_experience count'></td>
         </tr>
@@ -48,7 +48,7 @@
             <td>Science level</td>
             <td id='science_level' class='science_level count'></td>
         </tr>
-        <tr>
+        <tr class="tooltip" title="Experience in scientific research">
             <td>Science experience</td>
             <td id='science_experience' class='science_experience count'></td>
         </tr>
@@ -56,35 +56,35 @@
 </div>
 <div id='resources'>
     <table id='resources_data'>
-        <tr>
+        <tr class="tooltip" title="Current money">
             <td>Money</td>
             <td id='money' class='money count'></td>
         </tr>
-        <tr>
+        <tr class="tooltip" title="Current food">
             <td>Food</td>
             <td id='food' class='food count'></td>
         </tr>
-        <tr>
+        <tr class="tooltip" title="Current reputation">
             <td>Reputation</td>
             <td id='reputation' class='reputation count'></td>
         </tr>
     </table>
     <table id='score_data'>
-        <tr>
+        <tr class="tooltip" title="Your victory points">
             <td>Score</td>
-            <td class='score count'></td>
+            <td id='score' class='score count'></td>
         </tr>
     </table>
 </div>
 <div id='buttons'>
     <p>
-        <button id='farm_button' class='control'>Investment into Agriculture</button>
+        <button id='farm_button' class='control tooltip' title="Farmer training costs 5 food">Train farmer</button>
     </p>
     <p>
-        <button id='science_button' class='control'>Investment into Science</button>
+        <button id='science_button' class='control tooltip' title="Scientist training costs 10 food and 10 gold">Train scientist</button>
     </p>
     <p>
-        <button id='random_button' class='control'>Random event</button>
+        <button id='random_button' class='control tooltip' title="Something strange happens">Random event</button>
     </p>
 </div>
 <p id="messages" class="message"></p>

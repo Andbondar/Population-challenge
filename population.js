@@ -2,6 +2,11 @@
  * Created by Andrew on 20.08.2014.
  */
 $(document).ready(function () {
+    $('.tooltip').tooltipster({     //activate tooltips
+        theme: 'tooltipster-light',
+        position: 'bottom-right',
+        maxWidth: 120
+    });
     setInterval(unemployedGenerator, 10000);
     setInterval(updateCount, 100);
 
@@ -15,7 +20,8 @@ $(document).ready(function () {
     var resources = {
         money: 20,
         food: 30,
-        reputation: 0
+        reputation: 0,
+        score:0
     };
 
     var research = {
@@ -38,6 +44,7 @@ $(document).ready(function () {
         $('#farm_experience').text(research.farmExperience);
         $('#science_level').text(research.scienceLevel);
         $('#science_experience').text(research.scienceExperience);
+        $('#score').text(resources.score);
     }
 
     function sendMessage(text) {
@@ -58,10 +65,10 @@ $(document).ready(function () {
                 population.farmers += 1; //increase farmers count by 1
                 resources.food -= 5; //decrease food count by 5
             } else {
-                sendMessage(messages.notEnoughFood);
+                sendMessage(errorMessages.notEnoughFood);
             }
         } else {
-            sendMessage(messages.notEnoughUnemployed);
+            sendMessage(errorMessages.notEnoughUnemployed);
         }
     });
 
@@ -74,35 +81,14 @@ $(document).ready(function () {
                     resources.food -= 10;
                     resources.money -= 10;
                 } else {
-                    sendMessage(messages.notEnoughMoney);
+                    sendMessage(errorMessages.notEnoughMoney);
                 }
             } else {
-                sendMessage(messages.notEnoughFood);
+                sendMessage(errorMessages.notEnoughFood);
             }
         } else {
-            sendMessage(messages.notEnoughUnemployed);
+            sendMessage(errorMessages.notEnoughUnemployed);
         }
     });
 
-    $(function(){//tooltip
-        $('tr').hover(function(e){ // Hover event
-            var titleText = $(this).attr('tooltip');
-            $(this)
-                .data('tiptext', titleText)
-                .removeAttr('title');
-            $('<p class="tooltip"></p>')
-                .text(titleText)
-                .appendTo('body')
-                .css('top', (e.pageY - 10) + 'px')
-                .css('left', (e.pageX + 20) + 'px')
-                .fadeIn('slow');
-        }, function(){ // Hover off event
-            $(this).attr('tooltip', $(this).data('tiptext'));
-            $('.tooltip').remove();
-        }).mousemove(function(e){ // Mouse move event
-            $('.tooltip')
-                .css('top', (e.pageY - 10) + 'px')
-                .css('left', (e.pageX + 20) + 'px');
-        });
-    });
 });
