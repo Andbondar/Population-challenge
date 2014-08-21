@@ -2,26 +2,30 @@
  * Created by Andrew on 20.08.2014.
  */
 $(document).ready(function(){
-    setInterval(unemployedGenerator,10000);
-    setInterval(visualization, 10000);
+    setInterval(unemployedGenerator, 10000);
+    setInterval(updateCount, 100);
 
     var population = {
-        unemployed:parseInt($("#unemployed_count").html(),10),
-        farmers:0,
-        scientists:0,
-        government:0
-    };
-    var resources = {
-        money:parseInt($("#money").text(),10),
-        food:parseInt($('#food').text(),10),
-        reputation:parseInt($('#reputation').text(),10)
+        unemployed: 2,
+        farmers: 0,
+        scientists: 0,
+        government: 0
     };
 
-    function visualization(){
+    var resources = {
+        money: 20,
+        food: 30,
+        reputation: 0
+    };
+
+    function updateCount(){
         $('#unemployed_count').text(population.unemployed);
         $('#farmers').text(population.farmers);
-        $('#food').text(resources.food);
+        $('#scientists').text(population.scientists);
+        $('#government').text(population.government);
         $('#money').text(resources.money);
+        $('#food').text(resources.food);
+        $('#reputation').text(resources.reputation);
     }
 
     function sendMessage(text){
@@ -31,18 +35,17 @@ $(document).ready(function(){
         message.delay(2000).fadeOut('slow');
     }
 
-    var increment=1;
     function unemployedGenerator(){
-       population.unemployed+=increment;
+       population.unemployed += 1;
     }
 
     $("#farm_button").click(function() { //if unemployed citizen and 5 food are available - convert unemployed to farmer
         var foodCount = resources.food;
-        if (population.unemployed>=1){
-            if (foodCount>=5){
-                population.unemployed-=1;//decrease unemployed count by 1
-                population.farmers+=1;//increase farmers count by 1
-                resources.food-=5;//decrease food count by 5
+        if (population.unemployed >= 1){
+            if (foodCount >= 5){
+                population.unemployed -= 1;//decrease unemployed count by 1
+                population.farmers += 1;//increase farmers count by 1
+                resources.food -= 5;//decrease food count by 5
             }
             else{
                 sendMessage('Not enough food. Train more farmers.');
@@ -52,6 +55,5 @@ $(document).ready(function(){
             sendMessage('There are currently no unemployed citizens for work on farm.');
         }
     });
-
 
 });
