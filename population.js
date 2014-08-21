@@ -1,7 +1,7 @@
 /**
  * Created by Andrew on 20.08.2014.
  */
-$(document).ready(function(){
+$(document).ready(function() {
     setInterval(unemployedGenerator, 10000);
     setInterval(updateCount, 100);
 
