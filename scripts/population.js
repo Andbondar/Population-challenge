@@ -10,8 +10,8 @@ $(document).ready(function() {
         maxWidth: 120
     });
 
-    setInterval(unemployedGenerator, 10000);
     setInterval(foodProduction, 10000);
+    setInterval(unemployedGenerator, 10000);
     setInterval(moneyProduction, 10000);
 
     var population = {
