@@ -124,6 +124,18 @@ $(document).ready(function() {
         $('#buy_gold').text('Buy gold (' + $('#market_counter').val() / 2 + ')');
     });
 
+    $('#buy_food').click(function() {
+        resources.money -= $('#market_counter').val();
+        resources.food += $('#market_counter').val() / 2;
+        updateCount();
+    });
+
+    $('#buy_gold').click(function() {
+        resources.food -= $('#market_counter').val();
+        resources.money += $('#market_counter').val() / 2;
+        updateCount();
+    });
+
     function foodProduction() {
         resources.food = resources.food + population.farmers * 3;
         foodConsumption();
