@@ -19,21 +19,24 @@ $(document).ready(function() {
         farmers: 0,
         scientists: 0,
         government: 0,
-        total: 0
+        total: 0,
+        reset: function() {this.unemployed = 2; this.farmers = 0; this.scientists = 0; this.government = 0;}
     };
 
     var resources = {
         money: 10,
         food: 30,
         reputation: 0,
-        score: 0
+        score: 0,
+        reset: function() {this.money = 10; this.food = 30; this.reputation = 0; this.score = 0;}
     };
 
     var research = {
         farmLevel: 0,
         farmExperience: 0,
         scienceLevel: 0,
-        scienceExperience: 0
+        scienceExperience: 0,
+        reset: function() {this.farmLevel = 0; this.farmExperience = 0; this.scienceLevel = 0; this.scienceExperience = 0;}
     };
 
     updateCount();
@@ -133,6 +136,13 @@ $(document).ready(function() {
     $('#buy_gold').click(function() {
         resources.food -= $('#market_counter').val();
         resources.money += $('#market_counter').val() / 2;
+        updateCount();
+    });
+
+    $('#restart').click(function() {
+        population.reset();
+        resources.reset();
+        research.reset();
         updateCount();
     });
 
