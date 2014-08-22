@@ -1,5 +1,6 @@
 /**
  * Created by Andrew on 20.08.2014.
+ * Mike
  */
 $(document).ready(function() {
 
@@ -99,9 +100,14 @@ $(document).ready(function() {
 
     function foodProduction() {
         resources.food = resources.food + population.farmers * 3 - population.total;
+        foodConsumption();
+    }
+
+    function foodConsumption() {
+        //TODO formula for consuming food
         if (resources.food < 0) {
-            population.unemployed = parseInt(Math.floor(population.unemployed * 0.5)); //50% of unemployed died. 50% left
-            population.scientists = parseInt(Math.floor(population.scientists * 0.8)); //20% of scientists died, 80% left
+            population.unemployed = parseInt(Math.floor(population.unemployed * 0.5)); //50% of unemployed died
+            population.scientists = parseInt(Math.floor(population.scientists * 0.8)); //20% of scientists died
             resources.food = 0;
             updateCount();
             sendMessage(eventMessages.famine);
