@@ -109,7 +109,7 @@ $(document).ready(function() {
     });
 
     $('#market_button').click(function() {
-        if (resources.money >=15) {
+        if (resources.money >= 15) {
             resources.money -= 15;
             $('#market').show();
             document.getElementById('market_button').disabled = true;
@@ -143,7 +143,7 @@ $(document).ready(function() {
 
     function foodConsumption() {
         resources.food = resources.food - population.unemployed - population.scientists * 2;
-        if (resources.food < 0) {
+        if (resources.food <= 0) {
             population.unemployed = parseInt(Math.floor(population.unemployed * 0.5)); //50% of unemployed died
             population.scientists = parseInt(Math.floor(population.scientists * 0.8)); //20% of scientists died
             resources.food = 0;
