@@ -10,73 +10,73 @@
     <script type="text/javascript" src="scripts/external/jquery.tooltipster.min.js"></script>
     <title>Population control</title>
 </head>
-<body>
+<body onload="init()">
 <h1>Population control</h1>
 <h3>Population: <span id='population_count'></span></h3>
 
-<div id='population'>
+<div id='population' class="info">
     <table id='population_data'>
         <tr class="tooltip" title='Unemployed  citizens'>
             <td>Unemployed</td>
-            <td id='unemployed_count' class='unemployed count'></td>
+            <td id='unemployed_count' class='count'></td>
         </tr>
         <tr class="tooltip" title='Farmers produce food'>
             <td>Farmers</td>
-            <td id='farmers' class='farmers count'></td>
+            <td id='farmers' class='count'></td>
         </tr>
         <tr class="tooltip" title='Scientists earn gold and experience'>
             <td>Scientists</td>
-            <td id='scientists' class='scientists count'></td>
+            <td id='scientists' class='count'></td>
         </tr>
         <tr class="tooltip" title='Government increases your reputation'>
             <td>Government</td>
-            <td id='government' class='government count'></td>
+            <td id='government' class='count'></td>
         </tr>
     </table>
 </div>
-<div id='research'>
+<div id='research' class="info">
     <table>
         <tr class="tooltip" title='Farm level shows effectiveness of farmers'>
             <td>Farm level</td>
-            <td id='farm_level' class='farm_level count'></td>
+            <td id='farm_level' class='count'></td>
         </tr>
         <tr class="tooltip" title="Experience in agriculture">
             <td>Farm experience</td>
-            <td id='farm_experience' class='farm_experience count'></td>
+            <td id='farm_experience' class='count'></td>
         </tr>
         <tr class="tooltip" title='Science level shows effectiveness of scientists'>
             <td>Science level</td>
-            <td id='science_level' class='science_level count'></td>
+            <td id='science_level' class='count'></td>
         </tr>
         <tr class="tooltip" title="Experience in scientific research">
             <td>Science experience</td>
-            <td id='science_experience' class='science_experience count'></td>
+            <td id='science_experience' class='count'></td>
         </tr>
     </table>
 </div>
-<div id='resources'>
+<div id='resources' class="info">
     <table id='resources_data'>
         <tr class="tooltip" title="Current money">
             <td>Money</td>
-            <td id='money' class='money count'></td>
+            <td id='money' class='count'></td>
         </tr>
         <tr class="tooltip" title="Current food">
             <td>Food</td>
-            <td id='food' class='food count'></td>
+            <td id='food' class='count'></td>
         </tr>
         <tr class="tooltip" title="Current reputation">
             <td>Reputation</td>
-            <td id='reputation' class='reputation count'></td>
+            <td id='reputation' class='count'></td>
         </tr>
     </table>
     <table id='score_data'>
         <tr class="tooltip" title="Your victory points">
             <td>Score</td>
-            <td id='score' class='score count'></td>
+            <td id='score' class='count'></td>
         </tr>
     </table>
 </div>
-<div id='buttons'>
+<div id='buttons' class="info">
     <p>
         <button id='farm_button' class='control'>Train farmer</button>
     </p>
@@ -86,6 +86,16 @@
     <p>
         <button id='random_button' class='control'>Random event</button>
     </p>
+</div>
+<div id='structures' class="info">
+    <p>
+        <button id='market_button' class='control' style="display: none">Buy market</button>
+    </p>
+</div>
+<div id='market' class="buildings" style="display: none">
+    Enter amount you want to sell. Conversion is 1:2.
+    <br>
+    <input id="market_counter" type="number"> <button id='buy_food' class='control'>Buy food</button> <button id='buy_gold' class='control'>Buy gold</button>
 </div>
 <p id="messages" class="message"></p>
 </body>

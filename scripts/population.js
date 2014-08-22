@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     setInterval(unemployedGenerator, 10000);
     setInterval(foodProduction, 10000);
+    setInterval(moneyProduction, 10000);
 
     var population = {
         unemployed: 2,
@@ -22,7 +23,7 @@ $(document).ready(function() {
     };
 
     var resources = {
-        money: 20,
+        money: 10,
         food: 30,
         reputation: 0,
         score: 0
@@ -52,6 +53,13 @@ $(document).ready(function() {
         $('#science_level').text(research.scienceLevel);
         $('#science_experience').text(research.scienceExperience);
         $('#score').text(resources.score);
+        showAvailableStructures();
+    }
+
+    function showAvailableStructures() {
+        if (resources.money >= 15) {
+            $('#market_button').show();
+        }
     }
 
     function sendMessage(text) {
@@ -59,8 +67,10 @@ $(document).ready(function() {
     }
 
     function unemployedGenerator() {
-        population.unemployed += 1;
-        updateCount();
+        if (resources.food > 0) {
+            population.unemployed += 1;
+            updateCount();
+        }
     }
 
     $("#farm_button").click(function() {
@@ -98,13 +108,29 @@ $(document).ready(function() {
         }
     });
 
+    $('#market_button').click(function() {
+        if (resources.money >=15) {
+            resources.money -= 15;
+            $('#market').show();
+            document.getElementById('market_button').disabled = true;
+            updateCount();
+        } else {
+            sendMessage(errorMessages.notEnoughMoney);
+        }
+    });
+
+    $('#market_counter').keyup(function() {
+        $('#buy_food').text('Buy food (' + $('#market_counter').val() / 2 + ')');
+        $('#buy_gold').text('Buy gold (' + $('#market_counter').val() / 2 + ')');
+    });
+
     function foodProduction() {
-        resources.food = resources.food + population.farmers * 3 - population.total;
+        resources.food = resources.food + population.farmers * 3;
         foodConsumption();
     }
 
     function foodConsumption() {
-        //TODO formula for consuming food
+        resources.food = resources.food - population.unemployed - population.scientists * 2;
         if (resources.food < 0) {
             population.unemployed = parseInt(Math.floor(population.unemployed * 0.5)); //50% of unemployed died
             population.scientists = parseInt(Math.floor(population.scientists * 0.8)); //20% of scientists died
@@ -115,6 +141,16 @@ $(document).ready(function() {
         } else if (population.total > resources.food) {
             sendMessage(warningMessages.famineDanger);
         }
+        updateCount();
+    }
+
+    function moneyProduction() {
+        resources.money = resources.money + population.scientists;
+        moneyConsumption();
+    }
+
+    function moneyConsumption() {
+        //TODO here write what consumes money
         updateCount();
     }
 
