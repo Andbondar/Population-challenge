@@ -10,9 +10,11 @@ $(document).ready(function() {
         maxWidth: 120
     });
 
-    setInterval(foodProduction, 10000);
-    setInterval(unemployedGenerator, 10000);
-    setInterval(moneyProduction, 10000);
+    var interval = 10000;
+    setInterval(foodProduction, interval);
+    setInterval(unemployedGenerator, interval);
+    setInterval(moneyProduction, interval);
+    setInterval(experienceGeneration,interval);
 
     var population = {
         unemployed: 2,
@@ -32,11 +34,11 @@ $(document).ready(function() {
     };
 
     var research = {
-        farmLevel: 0,
+        farmLevel: 1,
         farmExperience: 0,
-        scienceLevel: 0,
+        scienceLevel: 1,
         scienceExperience: 0,
-        reset: function() {this.farmLevel = 0; this.farmExperience = 0; this.scienceLevel = 0; this.scienceExperience = 0;}
+        reset: function() {this.farmLevel = 1; this.farmExperience = 0; this.scienceLevel = 1; this.scienceExperience = 0;}
     };
 
     updateCount();
@@ -48,9 +50,9 @@ $(document).ready(function() {
         $('#government').text(population.government);
         population.total = population.farmers + population.scientists + population.government + population.unemployed;
         $('#population_count').text(population.total);
-        $('#money').text(resources.money);
-        $('#food').text(resources.food);
-        $('#reputation').text(resources.reputation);
+        $('#money').text(resources.money.toFixed(1));
+        $('#food').text(resources.food.toFixed(1));
+        $('#reputation').text(resources.reputation.toFixed(1));
         $('#farm_level').text(research.farmLevel);
         $('#farm_experience').text(research.farmExperience);
         $('#science_level').text(research.scienceLevel);
@@ -147,7 +149,7 @@ $(document).ready(function() {
     });
 
     function foodProduction() {
-        resources.food = resources.food + population.farmers * 3;
+        resources.food = resources.food + population.farmers * 3 * (1 + 0.1 * (research.farmLevel - 1)); //each farm level increases food generation by 10%. At 1st level bonus is 0%
         foodConsumption();
     }
 
@@ -167,9 +169,19 @@ $(document).ready(function() {
     }
 
     function moneyProduction() {
-        resources.money = resources.money + population.scientists;
+        resources.money = resources.money + population.scientists * (1 + 0.1 * (research.scienceLevel - 1)); //each science level increases gold generation by 10%. At level 1 we have this bonus equal to 0%
         moneyConsumption();
     }
+
+    function experienceGeneration() {
+        research.farmExperience += population.farmers;
+        research.scienceExperience += population.scientists;
+        research.farmLevel = Math.floor(Math.log(research.farmExperience + 1)) + 1; //1 inside Math.log is added to avoid (-infinity) value.
+                                                                                    //1 outside Math.floor is added at the end to start from 1st level (not zero)
+        research.scienceLevel = Math.floor(Math.log(research.scienceExperience + 1)) + 1;
+        updateCount();
+    }
+
 
     function moneyConsumption() {
         //TODO here write what consumes money
